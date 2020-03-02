@@ -8,7 +8,6 @@ import android.os.Build
 import android.os.Bundle
 import android.os.PowerManager
 import android.provider.Settings
-import android.widget.Toast.LENGTH_LONG
 import androidx.annotation.RequiresApi
 import com.heinrichreimersoftware.materialintro.app.IntroActivity
 import com.heinrichreimersoftware.materialintro.slide.SimpleSlide
@@ -19,10 +18,10 @@ import io.github.sds100.keymapper.util.DexUtils.isDexSupported
 import io.github.sds100.keymapper.util.PermissionUtils
 import io.github.sds100.keymapper.util.isPermissionGranted
 import org.jetbrains.anko.longToast
-import org.jetbrains.anko.toast
 
 /**
  * Created by sds100 on 07/07/2019.
+ * Modified by VRTinker in Feb 2020.
  */
 
 @RequiresApi(Build.VERSION_CODES.M)
@@ -36,11 +35,36 @@ class IntroActivity : IntroActivity() {
         SimpleSlide.Builder().apply {
             title(R.string.showcase_note_from_the_developer_title)
             description(R.string.showcase_note_from_the_developer_message)
-            background(R.color.red)
-            backgroundDark(R.color.redDark)
-            image(R.mipmap.ic_launcher_round)
+            background(R.color.purple)
+            backgroundDark(R.color.purpleDark)
+            image(R.drawable.ic_reconquestlogoandroid_bw)
             canGoBackward(true)
             scrollable(true)
+        }.build()
+    }
+    private val mEnableAccesssibilityServiceSlide by lazy {
+        SimpleSlide.Builder().apply {
+            title(R.string.showcase_enable_accessibility_service_title)
+            description(R.string.showcase_enable_accessibility_service_message)
+            background(R.color.blue)
+            backgroundDark(R.color.blueDark)
+            image(R.drawable.ic_accessibility)
+            canGoBackward(true)
+            scrollable(true)
+
+            buttonCtaLabel(R.string.showcase_enable_accessibility_service_button)
+            buttonCtaClickListener {
+                val settingsIntent = Intent(Settings.ACTION_ACCESSIBILITY_SETTINGS)
+
+                settingsIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK
+                        or Intent.FLAG_ACTIVITY_CLEAR_TASK
+                        or Intent.FLAG_ACTIVITY_EXCLUDE_FROM_RECENTS)
+
+                startActivity(settingsIntent)
+            }
+
+
+
         }.build()
     }
 
@@ -48,8 +72,8 @@ class IntroActivity : IntroActivity() {
         SimpleSlide.Builder().apply {
             title(R.string.showcase_disable_battery_optimisation_title)
             description(R.string.showcase_disable_battery_optimisation_message)
-            background(R.color.blue)
-            backgroundDark(R.color.blueDark)
+            background(R.color.bluegreen)
+            backgroundDark(R.color.bluegreenDark)
             image(R.drawable.ic_battery_std_white_64dp)
             canGoBackward(true)
             scrollable(true)
@@ -63,18 +87,6 @@ class IntroActivity : IntroActivity() {
                     longToast(R.string.error_battery_optimisation_activity_not_found)
                 }
             }
-        }.build()
-    }
-
-    private val mDexSlide by lazy {
-        SimpleSlide.Builder().apply {
-            title(R.string.showcase_dex_mode_supported_title)
-            description(R.string.showcase_dex_mode_supported_message)
-            background(R.color.orange)
-            backgroundDark(R.color.orangeDark)
-            image(R.drawable.ic_dock_white_64dp)
-            canGoBackward(true)
-            scrollable(true)
         }.build()
     }
 
@@ -105,15 +117,13 @@ class IntroActivity : IntroActivity() {
 
         addSlide(mNoteFromDevSlide)
 
+        addSlide(mEnableAccesssibilityServiceSlide)
+
         val powerManager = (getSystemService(Context.POWER_SERVICE)) as PowerManager
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M
             && !powerManager.isIgnoringBatteryOptimizations(Constants.PACKAGE_NAME)) {
             addSlide(mBatteryOptimisationSlide)
-        }
-
-        if (isDexSupported()) {
-            addSlide(mDexSlide)
         }
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {

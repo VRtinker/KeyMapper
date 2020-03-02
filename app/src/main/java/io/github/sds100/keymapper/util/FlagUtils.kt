@@ -18,8 +18,7 @@ object FlagUtils {
 
     private val FLAG_LABEL_MAP = mapOf(
             FLAG_LONG_PRESS to R.string.flag_long_press,
-            FLAG_SHOW_VOLUME_UI to R.string.flag_show_volume_dialog,
-            FLAG_VIBRATE to R.string.flag_vibrate
+            FLAG_SHOW_VOLUME_UI to R.string.flag_show_volume_dialog
     )
 
     fun showFlagDialog(ctx: Context,

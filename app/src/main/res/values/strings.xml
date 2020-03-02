@@ -4,8 +4,8 @@
 
     <string name="no_action_chosen">No Action Chosen</string>
     <string name="triggers_header">Triggers</string>
-    <string name="accessibility_service_description">Key Mapper needs to use an accessibility service so it can listen to button/key presses and perform the actions you\'ve chosen.
-    The accessibility service only listens for key events and nothing else. Look at the source code, which is linked to in the About section inside the app, if you are paranoid I\'m spying. :)</string>
+    <string name="accessibility_service_description">Accessibility service for Key Mapper needs to be enabled in order to monitor long-press of the volume buttons and perform the associated mapped actions (i.e.: by default, when you long-press Volume Down for more than 750ms ReconQuest will launch).
+    Click events, as reported in the Privacy Policy outlined by the original developer (which can be found in the “About” section of Key Mapper), are temporarily stored on your Oculus Quest while they occur, but they are promptly erased, never collected or permanently saved.</string>
     <string name="record_trigger_help">When you click \"record trigger\", you have 5 seconds to press the keys/buttons which will trigger the action. Your trigger will be added after the 5 seconds. Press \"clear\" to clear the keys you have already typed. If a button isn\'t detected here, the device vendor is probably blocking accessibility services from seeing it. Therefore, it can\'t be remapped.</string>
     <string name="selection_count">%d selected</string>
     <string name="ime_service_label" translatable="false">Key Mapper Keyboard</string>
@@ -16,9 +16,9 @@
     <string name="performing_action">Key Mapper is performing an action…</string>
     <string name="email_subject">Key Mapper query</string>
     <string name="log_is_empty">Log is empty!</string>
-    <string name="everything_looks_good">Everything looks good!</string>
-    <string name="warning_the_app_will_work">The app will work but some things might need fixing depending on what you\'re doing.</string>
-    <string name="your_device_doesnt_support_some_actions">Your device doesn\'t support some actions.</string>
+    <string name="everything_looks_good">You are all set! Have fun using ReconQuest!</string>
+    <string name="warning_the_app_will_work">Key Mapper is active but still missing “Do Not Disturb” permission. “Fix” this!</string>
+    <string name="your_device_doesnt_support_some_actions">On the Oculus Quest some of this native commands may result in odd behaviours. If you ever get stuck, try clicking multiple times the Home button on the Oculus Touch Controller to return to the UI</string>
     <string name="tab_unsupported_actions">Unsupported Actions</string>
     <string name="requires_root">REQUIRES ROOT</string>
 
@@ -169,9 +169,9 @@
 
     <!--Preference titles and summaries-->
     <string name="title_pref_long_press_delay">Long press delay</string>
-    <string name="summary_pref_long_press_delay">How long in milliseconds should a button be pressed for it to be detected as a long press. Default is 500ms.</string>
+    <string name="summary_pref_long_press_delay">How long in milliseconds should a button be pressed for it to be detected as a long press. Default is 750ms.</string>
 
-    <string name="summary_pref_vibrate_duration">How long in milliseconds to vibrate for if vibrating is enabled for a remap. Default is 200ms.</string>
+    <string name="summary_pref_vibrate_duration">How long in milliseconds to vibrate for if vibrating is enabled for a remap. Default is 1ms.</string>
     <string name="title_pref_vibrate_duration">Vibrate duration</string>
 
     <string name="summary_pref_force_vibrate">Force all remaps to vibrate.</string>
@@ -239,38 +239,36 @@
     <!--Action Types Titles-->
     <string name="action_type_title_application">App</string>
     <string name="action_type_title_application_shortcut">App shortcut</string>
-    <string name="action_type_title_key">Key</string>
-    <string name="action_type_title_keycode">Key code</string>
     <string name="action_type_title_system_action">Other</string>
-    <string name="action_type_title_text_block">Text</string>
     <string name="action_type_url">URL</string>
     <!--Action Types Titles-->
 
     <!--flags-->
     <string name="flag_show_volume_dialog">Show volume dialog</string>
     <string name="flag_long_press">Long press</string>
-    <string name="flag_vibrate">Vibrate</string>
     <!--flags-->
 
     <!-- Showcase -->
     <string name="showcase_accessibility_service_title">Enable the accessibility service</string>
-    <string name="showcase_accessibility_service_description">Your keymaps will only work once you have enabled the accessibility service. It also needs to be turned on to create a trigger.</string>
+    <string name="showcase_accessibility_service_description">In order for Key Mapper to work on your Oculus Quest, you have to enable its accessibility service. Tap the “FIX” button to load the Accessibility settings menu, select “Key Mapper” and flip the toggle to enable access, then press B or Y twice on the Oculus Touch controller to come back to this screen and continue</string>
 
     <string name="showcase_record_trigger_title">The accessibility service is disabled</string>
     <string name="showcase_record_trigger_description">You can only record a trigger if the accessibility service is enabled.</string>
 
-    <string name="showcase_note_from_the_developer_title">Note from the developer</string>
-    <string name="showcase_note_from_the_developer_message">There is no guarantee that every action will work on your device and every button will be detected. One reason is there are many flavours of Android and OEMs can break features by accident or intentionally. If something doesn\'t work, please notify the developer and refrain from giving the app a poor rating since the issue is often out of the developer\'s control. =)</string>
+    <string name="showcase_note_from_the_developer_title">Note to ReconQuest users</string>
+    <string name="showcase_note_from_the_developer_message">This is a version of Key Mapper specifically modified to be used on the Oculus Quest, therefore it differs from the version provided by its original developer. Any original Key Mapper option that is not relevant on the Oculus Quest has been removed. If you encounter any issues, please refrain from contacting the original developer, but notify the developer of ReconQuest instead!</string>
 
-    <string name="showcase_disable_battery_optimisation_title">Disable battery optimisation</string>
-    <string name="showcase_disable_battery_optimisation_message">Tap "Turn off" to prevent Android from stopping the app while it is in the background. Your OEM\'s skin such as MIUI or Samsung Experience may have other \"battery saving\" features so it is recommended to turn them off for Key Mapper as well.</string>
+    <string name="showcase_enable_accessibility_service_title">Enable Accessibility Service</string>
+    <string name="showcase_enable_accessibility_service_message">In order for Key Mapper to monitor your clicks and perform the associated mapped actions on your Oculus Quest, you have to enable its “Accessibility service”. When that is the case, by default, a long press (>750ms) of the Volume-(Down) button will launch ReconQuest. To enable it, tap the “GRANT” button below to load the Accessibility settings menu, select “Key Mapper” and flip the toggle to enable access, then press B or Y (twice) on the Oculus Touch controller to come back to this screen and continue.</string>
+    <string name="showcase_enable_accessibility_service_button">Grant</string>
+
+    <string name="showcase_disable_battery_optimisation_title">Disable battery optimization</string>
+    <string name="showcase_disable_battery_optimisation_message">Even though you are offered the choice, if you so wish, you DO NOT NEED to disable battery optimization to prevent Android from stopping Key Mapper while it runs in the background On the Oculus Quest, Key Mapper is kept alive even while the battery optimization is enabled. Therefore you can safely ignore the “TURN OFF” button below and continue</string>
     <string name="showcase_disable_battery_optimisation_button">Turn off</string>
 
-    <string name="showcase_dex_mode_supported_title">Your device seems to support Samsung Dex</string>
-    <string name="showcase_dex_mode_supported_message">Samsung doesn\'t allow apps with a 3rd party keyboard to open while in Dex mode. Therefore, this app won\'t open and the Key Mapper keyboard won\'t work while you are in Dex mode. Your key maps which don\'t require the Key Mapper keyboard will still work while you\'re in Dex mode.</string>
+    <string name="showcase_dnd_access_title">Do Not Disturb Permission</string>
+    <string name="showcase_dnd_access_description">Key Mapper needs “Do Not Disturb” permission granted. When that is not the case, the Volume button mapped to launch ReconQuest will cease to provide its regular functionality (i.e.: assuming the default configuration is left untouched, you would no longer be able to use the button to decrease the volume as well). This holds true whether your Oculus Quest is running in “Do Not Disturb” mode or not. Tap the “GRANT” button below to load the “Do Not Disturb” permission menu, flip the toggle to grant permission, then press B or Y on the Oculus Touch controller to complete the setup of your Oculus Quest!</string>
 
-    <string name="showcase_dnd_access_title">Do Not Disturb Access</string>
-    <string name="showcase_dnd_access_description">The app needs Do Not Disturb access if you want actions which change the volume and remapped volume buttons to work while in Do Not Disturb mode.</string>
     <!-- Showcase -->
 
     <!-- system action options -->
@@ -317,8 +315,8 @@
     <string name="error_cant_find_write_settings_page">Can\'t find the WRITE_SETTINGS permission page!</string>
     <string name="error_opening_app_shortcut">Error opening this app shortcut</string>
     <string name="error_no_app_found_to_send_feedback">No compatible app is found to send feedback.</string>
-    <string name="error_dnd_access_not_granted">If you are remapping a volume button you need to give the app Do Not Disturb access if you want the buttons to work while in Do Not Disturb mode!</string>
-    <string name="dnd_access_granted">Permission to change Do Not Disturb mode granted!</string>
+    <string name="error_dnd_access_not_granted">Click the “FIX” button to grant Key Mapper “Do Not Disturb” permission. The mapped Volume buttons of your Oculus Quest will not perform their regular function otherwise (this would be the case even when your Oculus Quest is not in “Do Not Disturb” mode)!</string>
+    <string name="dnd_access_granted">Do Not Disturb Permission granted! Your Oculus Quest volume buttons will always perform as intended!</string>
     <string name="error_cant_find_dnd_access_settings">Can\'t find the Do Not Disturb access permission settings!</string>
     <string name="error_enable_log">Key Mapper encountered an error! Try to reproduce the error, enable logging to see what happened.</string>
     <string name="error_look_in_log">Key Mapper encountered an error! Look in the Log.</string>
@@ -334,20 +332,20 @@
     <string name="error_front_flash_not_found">No front flash</string>
     <string name="error_back_flash_not_found">No back flash</string>
 
-    <string name="error_accessibility_service_disabled">The accessibility service must be enabled for this app to work!</string>
-    <string name="error_accessibility_service_enabled">Accessibility service is enabled!</string>
+    <string name="error_accessibility_service_disabled">Key Mapper will not work on your Oculus Quest if its Accessibility service is disabled! Tap the “FIX” button to enable the service</string>
+    <string name="error_accessibility_service_enabled">Accessibility service is enabled. If you have already granted Key Mapper “Do Not Disturb” permission, you are all set!</string>
 
     <string name="warning_need_write_secure_settings_permission">Some features need WRITE_SECURE_SETTINGS permission.</string>
     <string name="fixed_need_write_secure_settings_permission">WRITE_SECURE_SETTINGS permission granted.</string>
 
-    <string name="error_ime_service_disabled_status_layout">The keyboard needs to be enabled for “Keycode”, “Key”, “Text” and some other actions to work.</string>
+    <string name="error_ime_service_disabled_status_layout">The Keyboard IME needs to be enabled to map actions like “Keycode”, “Key” or “Text” Enable only if you plan to use these kinds of actions (and you know what you are doing!) The default ReconQuest configuration does not need this “FIX”</string>
     <string name="error_ime_service_enabled">Keyboard is enabled!</string>
     <string name="error_ime_service_disabled">Keyboard is disabled!</string>
-    <string name="error_critical_ime_service_disabled">The keyboard must be enabled and selected for some of your actions to work!</string>
+    <string name="error_critical_ime_service_disabled">The keyboard must be enabled and selected for some of your actions to work. “FIX” this on your Oculus Quest only if/when you intend to map actions like “Keycode”, “Key” or “Text”!</string>
     <string name="error_ime_not_found">Can\'t find the %s input method</string>
     <string name="error_no_enabled_imes">This device has no enabled input methods!</string>
 
-    <string name="error_the_app_wont_work">Your keymaps won\'t work! Some things need fixing!</string>
+    <string name="error_the_app_wont_work">You have not enabled Accessibility service for Key Mapper on your Oculus Quest. Please “FIX” this!</string>
     <string name="error_cant_move_to_end_of_text_in_this_field">You can\'t move to the end of the text in this field!</string>
     <string name="error_battery_optimisation_activity_not_found">Battery optimisation settings not found! If it exists, open it manually.</string>
 
@@ -365,38 +363,6 @@
 
     <string name="action_volume_up">Volume Up</string>
     <string name="action_volume_down">Volume Down</string>
-    <string name="action_volume_mute">Mute Volume</string>
-    <string name="action_toggle_mute">Toggle Mute</string>
-    <string name="action_volume_unmute">Unmute Volume</string>
-    <string name="action_volume_show_dialog">Show Volume Dialog</string>
-    <string name="action_increase_stream">Increase Stream</string>
-    <string name="action_increase_stream_formatted">Increase %s Stream</string>
-    <string name="action_decrease_stream">Decrease Stream</string>
-    <string name="action_decrease_stream_formatted">Decrease %s Stream</string>
-    <string name="action_cycle_ringer_mode">Cycle Through Ringer Modes (Ring, Vibrate, Silent)</string>
-    <string name="action_change_ringer_mode">Change Ringer Mode</string>
-    <string name="action_change_ringer_mode_formatted">Change To %s Mode</string>
-
-    <string name="action_enable_auto_rotate">Enable Auto Rotate</string>
-    <string name="action_disable_auto_rotate">Disable Auto Rotate</string>
-    <string name="action_toggle_auto_rotate">Toggle Auto Rotate</string>
-    <string name="action_portrait_mode">Portrait Mode</string>
-    <string name="action_landscape_mode">Landscape Mode</string>
-    <string name="action_switch_orientation">Switch Orientation</string>
-
-    <string name="action_toggle_mobile_data">Toggle Mobile Data</string>
-    <string name="action_enable_mobile_data">Enable Mobile Data</string>
-    <string name="action_disable_mobile_data">Disable Mobile Data</string>
-
-    <string name="action_toggle_auto_brightness">Toggle Auto-Brightness</string>
-    <string name="action_disable_auto_brightness">Disable Auto-Brightness</string>
-    <string name="action_enable_auto_brightness">Enable Auto-Brightness</string>
-    <string name="action_increase_brightness">Increase Brightness</string>
-    <string name="action_decrease_brightness">Decrease Brightness</string>
-
-    <string name="action_expand_notification_drawer">Expand Notification Drawer</string>
-    <string name="action_expand_quick_settings">Expand Quick Settings</string>
-    <string name="action_collapse_status_bar">Collapse Status Bar</string>
 
     <string name="action_pause_media">Pause Media Playback</string>
     <string name="action_play_media">Resume Media Playback</string>
@@ -408,65 +374,17 @@
     <string name="action_rewind">Rewind</string>
     <string name="action_rewind_message">Not all media apps support rewinding. E.g Google Play Music.</string>
 
-    <string name="action_go_back">Go Back</string>
-    <string name="action_go_home">Go Home</string>
-    <string name="action_open_recents">Open Recents</string>
-    <string name="action_open_menu">Open Menu</string>
-    <string name="action_toggle_split_screen">Toggle Split Screen</string>
-
-    <string name="action_toggle_flashlight">Toggle Flashlight</string>
-    <string name="action_enable_flashlight">Enable Flashlight</string>
-    <string name="action_disable_flashlight">Disable Flashlight</string>
-
-    <string name="action_toggle_flashlight_formatted">Toggle %s Flashlight</string>
-    <string name="action_enable_flashlight_formatted">Enable %s Flashlight</string>
-    <string name="action_disable_flashlight_formatted">Disable %s Flashlight</string>
-
-    <string name="action_nfc_enable">Enable NFC</string>
-    <string name="action_nfc_disable">Disable NFC</string>
-    <string name="action_nfc_toggle">Toggle NFC</string>
-
     <string name="action_screenshot">Screenshot</string>
-    <string name="action_open_assistant">Open Google Assistant</string>
-    <string name="action_open_camera">Open Camera</string>
 
-    <string name="action_lock_device">Lock Device (non-root)</string>
-    <string name="action_lock_device_root">Lock Device (root)</string>
-
-    <string name="action_secure_lock_device">Secure Lock Device</string>
-    <string name="action_secure_lock_device_message">This will lock your device but you will only be able to log back in with your PIN. The fingerprint scanner and face unlock will be disabled. For now this is the only reliable way I have found to lock non-rooted devices before Android Pie 9.0.</string>
-
-    <string name="action_consume_keyevent">Do Nothing</string>
-
-    <string name="action_move_to_end_of_text">Move Cursor to the End</string>
-    <string name="action_move_to_end_of_text_message">The Key Mapper keyboard must be selected for this action to work and this action may not work as intended in some apps.</string>
-    <string name="action_toggle_keyboard">Toggle Keyboard</string>
-    <string name="action_toggle_keyboard_message">This action will only work if you have tapped on an input field where the keyboard is supposed to be shown.</string>
-    <string name="action_show_keyboard">Show Keyboard</string>
-    <string name="action_hide_keyboard">Hide Keyboard</string>
-    <string name="action_show_keyboard_picker">Show Keyboard Picker (non-root)</string>
-    <string name="action_show_keyboard_picker_root">Show Keyboard Picker (root)</string>
-
-    <string name="action_switch_keyboard">Switch Keyboard</string>
-    <string name="action_switch_keyboard_formatted">Switch to %s</string>
-
-    <string name="action_open_settings">Open Settings</string>
     <string name="action_show_power_menu">Show Power Menu</string>
     <!-- System action labels -->
 
     <!-- System action category labels -->
     <string name="system_action_cat_wifi">WiFi</string>
     <string name="system_action_cat_bluetooth">Bluetooth</string>
-    <string name="system_action_cat_mobile_data">Mobile Data</string>
-    <string name="system_action_cat_navigation">Navigation</string>
     <string name="system_action_cat_volume">Volume</string>
-    <string name="system_action_cat_screen_rotation">Screen Rotation</string>
     <string name="system_action_cat_brightness">Brightness</string>
-    <string name="system_action_cat_status_bar">Status Bar</string>
     <string name="system_action_cat_media">Media</string>
-    <string name="system_action_cat_flashlight">Flashlight</string>
-    <string name="system_action_cat_nfc">NFC</string>
     <string name="system_action_cat_other">Other</string>
-    <string name="system_action_cat_keyboard">Keyboard</string>
     <!-- System action category labels -->
 </resources>

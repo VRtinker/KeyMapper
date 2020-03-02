@@ -3,78 +3,27 @@ package io.github.sds100.keymapper.util
 import android.Manifest
 import android.annotation.SuppressLint
 import android.content.Context
-import android.content.pm.PackageManager
 import android.os.Build
 import io.github.sds100.keymapper.*
 import io.github.sds100.keymapper.SystemAction.CATEGORY_BLUETOOTH
-import io.github.sds100.keymapper.SystemAction.CATEGORY_BRIGHTNESS
-import io.github.sds100.keymapper.SystemAction.CATEGORY_FLASHLIGHT
-import io.github.sds100.keymapper.SystemAction.CATEGORY_KEYBOARD
 import io.github.sds100.keymapper.SystemAction.CATEGORY_MEDIA
-import io.github.sds100.keymapper.SystemAction.CATEGORY_MOBILE_DATA
-import io.github.sds100.keymapper.SystemAction.CATEGORY_NAVIGATION
-import io.github.sds100.keymapper.SystemAction.CATEGORY_NFC
 import io.github.sds100.keymapper.SystemAction.CATEGORY_OTHER
-import io.github.sds100.keymapper.SystemAction.CATEGORY_SCREEN_ROTATION
-import io.github.sds100.keymapper.SystemAction.CATEGORY_STATUS_BAR
 import io.github.sds100.keymapper.SystemAction.CATEGORY_VOLUME
 import io.github.sds100.keymapper.SystemAction.CATEGORY_WIFI
-import io.github.sds100.keymapper.SystemAction.COLLAPSE_STATUS_BAR
-import io.github.sds100.keymapper.SystemAction.CONSUME_KEY_EVENT
-import io.github.sds100.keymapper.SystemAction.DECREASE_BRIGHTNESS
-import io.github.sds100.keymapper.SystemAction.DISABLE_AUTO_BRIGHTNESS
-import io.github.sds100.keymapper.SystemAction.DISABLE_AUTO_ROTATE
 import io.github.sds100.keymapper.SystemAction.DISABLE_BLUETOOTH
-import io.github.sds100.keymapper.SystemAction.DISABLE_MOBILE_DATA
-import io.github.sds100.keymapper.SystemAction.DISABLE_NFC
 import io.github.sds100.keymapper.SystemAction.DISABLE_WIFI
-import io.github.sds100.keymapper.SystemAction.ENABLE_AUTO_BRIGHTNESS
-import io.github.sds100.keymapper.SystemAction.ENABLE_AUTO_ROTATE
 import io.github.sds100.keymapper.SystemAction.ENABLE_BLUETOOTH
-import io.github.sds100.keymapper.SystemAction.ENABLE_MOBILE_DATA
-import io.github.sds100.keymapper.SystemAction.ENABLE_NFC
 import io.github.sds100.keymapper.SystemAction.ENABLE_WIFI
-import io.github.sds100.keymapper.SystemAction.EXPAND_NOTIFICATION_DRAWER
-import io.github.sds100.keymapper.SystemAction.EXPAND_QUICK_SETTINGS
 import io.github.sds100.keymapper.SystemAction.FAST_FORWARD
-import io.github.sds100.keymapper.SystemAction.GO_BACK
-import io.github.sds100.keymapper.SystemAction.GO_HOME
-import io.github.sds100.keymapper.SystemAction.HIDE_KEYBOARD
-import io.github.sds100.keymapper.SystemAction.INCREASE_BRIGHTNESS
-import io.github.sds100.keymapper.SystemAction.LANDSCAPE_MODE
-import io.github.sds100.keymapper.SystemAction.LOCK_DEVICE
-import io.github.sds100.keymapper.SystemAction.LOCK_DEVICE_ROOT
-import io.github.sds100.keymapper.SystemAction.MOVE_CURSOR_TO_END
 import io.github.sds100.keymapper.SystemAction.NEXT_TRACK
-import io.github.sds100.keymapper.SystemAction.OPEN_ASSISTANT
-import io.github.sds100.keymapper.SystemAction.OPEN_CAMERA
-import io.github.sds100.keymapper.SystemAction.OPEN_MENU
 import io.github.sds100.keymapper.SystemAction.SHOW_POWER_MENU
-import io.github.sds100.keymapper.SystemAction.OPEN_RECENTS
-import io.github.sds100.keymapper.SystemAction.OPEN_SETTINGS
 import io.github.sds100.keymapper.SystemAction.PAUSE_MEDIA
 import io.github.sds100.keymapper.SystemAction.PLAY_PAUSE_MEDIA
-import io.github.sds100.keymapper.SystemAction.PORTRAIT_MODE
 import io.github.sds100.keymapper.SystemAction.PREVIOUS_TRACK
 import io.github.sds100.keymapper.SystemAction.REWIND
 import io.github.sds100.keymapper.SystemAction.SCREENSHOT
-import io.github.sds100.keymapper.SystemAction.SECURE_LOCK_DEVICE
-import io.github.sds100.keymapper.SystemAction.SHOW_KEYBOARD
-import io.github.sds100.keymapper.SystemAction.SHOW_KEYBOARD_PICKER
-import io.github.sds100.keymapper.SystemAction.SHOW_KEYBOARD_PICKER_ROOT
-import io.github.sds100.keymapper.SystemAction.SWITCH_KEYBOARD
-import io.github.sds100.keymapper.SystemAction.SWITCH_ORIENTATION
-import io.github.sds100.keymapper.SystemAction.TOGGLE_AUTO_BRIGHTNESS
-import io.github.sds100.keymapper.SystemAction.TOGGLE_AUTO_ROTATE
 import io.github.sds100.keymapper.SystemAction.TOGGLE_BLUETOOTH
-import io.github.sds100.keymapper.SystemAction.TOGGLE_KEYBOARD
-import io.github.sds100.keymapper.SystemAction.TOGGLE_MOBILE_DATA
-import io.github.sds100.keymapper.SystemAction.TOGGLE_NFC
-import io.github.sds100.keymapper.SystemAction.TOGGLE_SPLIT_SCREEN
 import io.github.sds100.keymapper.SystemAction.TOGGLE_WIFI
-import io.github.sds100.keymapper.SystemAction.VOLUME_MUTE
-import io.github.sds100.keymapper.SystemAction.VOLUME_TOGGLE_MUTE
-import io.github.sds100.keymapper.SystemAction.VOLUME_UNMUTE
 import io.github.sds100.keymapper.util.ErrorCodeUtils.ERROR_CODE_FEATURE_NOT_AVAILABLE
 import io.github.sds100.keymapper.util.ErrorCodeUtils.ERROR_CODE_SDK_VERSION_TOO_HIGH
 import io.github.sds100.keymapper.util.ErrorCodeUtils.ERROR_CODE_SDK_VERSION_TOO_LOW
@@ -82,6 +31,7 @@ import io.github.sds100.keymapper.util.ErrorCodeUtils.ERROR_CODE_SYSTEM_ACTION_N
 
 /**
  * Created by sds100 on 01/08/2018.
+ * Modified by VRTinker in Feb 2018.
  */
 
 object SystemActionUtils {
@@ -92,16 +42,8 @@ object SystemActionUtils {
     val CATEGORY_LABEL_MAP = mapOf(
         CATEGORY_WIFI to R.string.system_action_cat_wifi,
         CATEGORY_BLUETOOTH to R.string.system_action_cat_bluetooth,
-        CATEGORY_MOBILE_DATA to R.string.system_action_cat_mobile_data,
-        CATEGORY_NAVIGATION to R.string.system_action_cat_navigation,
-        CATEGORY_SCREEN_ROTATION to R.string.system_action_cat_screen_rotation,
         CATEGORY_VOLUME to R.string.system_action_cat_volume,
-        CATEGORY_BRIGHTNESS to R.string.system_action_cat_brightness,
-        CATEGORY_STATUS_BAR to R.string.system_action_cat_status_bar,
         CATEGORY_MEDIA to R.string.system_action_cat_media,
-        CATEGORY_FLASHLIGHT to R.string.system_action_cat_flashlight,
-        CATEGORY_KEYBOARD to R.string.system_action_cat_keyboard,
-        CATEGORY_NFC to R.string.system_action_cat_nfc,
         CATEGORY_OTHER to R.string.system_action_cat_other
     )
 
@@ -110,56 +52,6 @@ object SystemActionUtils {
      */
     @SuppressLint("NewApi")
     private val SYSTEM_ACTION_DEFINITIONS = listOf(
-
-        //NAVIGATION
-        SystemActionDef(
-            id = GO_BACK,
-            category = CATEGORY_NAVIGATION,
-            iconRes = R.drawable.ic_arrow_back_black_24dp,
-            descriptionRes = R.string.action_go_back
-        ),
-        SystemActionDef(
-            id = GO_HOME,
-            category = CATEGORY_NAVIGATION,
-            iconRes = R.drawable.ic_home_black_24dp,
-            descriptionRes = R.string.action_go_home
-        ),
-        SystemActionDef(
-            id = OPEN_RECENTS,
-            category = CATEGORY_NAVIGATION,
-            descriptionRes = R.string.action_open_recents
-        ),
-        SystemActionDef(
-            id = OPEN_MENU,
-            category = CATEGORY_NAVIGATION,
-            iconRes = R.drawable.ic_more_vert_black_24dp,
-            descriptionRes = R.string.action_open_menu
-        ),
-        SystemActionDef(
-            id = TOGGLE_SPLIT_SCREEN,
-            category = CATEGORY_NAVIGATION,
-            descriptionRes = R.string.action_toggle_split_screen,
-            minApi = Build.VERSION_CODES.N
-        ),
-        //NAVIGATION
-
-        //STATUS BAR
-        SystemActionDef(
-            id = EXPAND_NOTIFICATION_DRAWER,
-            category = CATEGORY_STATUS_BAR,
-            descriptionRes = R.string.action_expand_notification_drawer
-        ),
-        SystemActionDef(
-            id = EXPAND_QUICK_SETTINGS,
-            category = CATEGORY_STATUS_BAR,
-            descriptionRes = R.string.action_expand_quick_settings
-        ),
-        SystemActionDef(
-            id = COLLAPSE_STATUS_BAR,
-            category = CATEGORY_STATUS_BAR,
-            descriptionRes = R.string.action_collapse_status_bar
-        ),
-        //STATUS BAR
 
         //WIFI
         SystemActionDef(
@@ -202,32 +94,6 @@ object SystemActionUtils {
             descriptionRes = R.string.action_disable_bluetooth
         ),
         //BLUETOOTH
-
-        //MOBILE DATA REQUIRES ROOT!
-        SystemActionDef(
-            id = TOGGLE_MOBILE_DATA,
-            category = CATEGORY_MOBILE_DATA,
-            iconRes = R.drawable.ic_signal,
-            /*needs READ_PHONE_STATE permission so it can check whether mobile data is enabled. On some devices
-            * it seems to need this permission.*/
-            permissions = arrayOf(Constants.PERMISSION_ROOT, Manifest.permission.READ_PHONE_STATE),
-            descriptionRes = R.string.action_toggle_mobile_data
-        ),
-        SystemActionDef(
-            id = ENABLE_MOBILE_DATA,
-            category = CATEGORY_MOBILE_DATA,
-            iconRes = R.drawable.ic_signal,
-            permissions = arrayOf(Constants.PERMISSION_ROOT),
-            descriptionRes = R.string.action_enable_mobile_data
-        ),
-        SystemActionDef(
-            id = DISABLE_MOBILE_DATA,
-            category = CATEGORY_MOBILE_DATA,
-            iconRes = R.drawable.ic_signal_off,
-            permissions = arrayOf(Constants.PERMISSION_ROOT),
-            descriptionRes = R.string.action_disable_mobile_data
-        ),
-        //MOBILE DATA
 
         //MEDIA
         SystemActionDef(
@@ -291,272 +157,8 @@ object SystemActionUtils {
             descriptionRes = R.string.action_volume_down,
             permissions = arrayOf(Manifest.permission.ACCESS_NOTIFICATION_POLICY)
         ),
-        SystemActionDef(
-            id = SystemAction.VOLUME_INCREASE_STREAM,
-            category = CATEGORY_VOLUME,
-            iconRes = R.drawable.ic_volume_up_black_24dp,
-            descriptionRes = R.string.action_increase_stream,
-            permissions = arrayOf(Manifest.permission.ACCESS_NOTIFICATION_POLICY),
-            getDescriptionWithOption = { ctx, option -> ctx.str(R.string.action_increase_stream_formatted, option) },
-            options = Option.STREAMS
-        ),
-        SystemActionDef(
-            id = SystemAction.VOLUME_DECREASE_STREAM,
-            category = CATEGORY_VOLUME,
-            iconRes = R.drawable.ic_volume_down_black_24dp,
-            descriptionRes = R.string.action_decrease_stream,
-            getDescriptionWithOption = { ctx, option -> ctx.str(R.string.action_increase_stream_formatted, option) },
-            options = Option.STREAMS,
-            permissions = arrayOf(Manifest.permission.ACCESS_NOTIFICATION_POLICY)
-        ),
-        SystemActionDef(
-            id = SystemAction.VOLUME_SHOW_DIALOG,
-            category = CATEGORY_VOLUME,
-            descriptionRes = R.string.action_volume_show_dialog
-        ),
-        SystemActionDef(
-            id = SystemAction.CYCLE_RINGER_MODE,
-            category = CATEGORY_VOLUME,
-            descriptionRes = R.string.action_cycle_ringer_mode,
-            permissions = arrayOf(Manifest.permission.ACCESS_NOTIFICATION_POLICY)
-        ),
-        SystemActionDef(id = SystemAction.CHANGE_RINGER_MODE,
-            category = CATEGORY_VOLUME,
-            descriptionRes = R.string.action_change_ringer_mode,
 
-            getDescriptionWithOption = { ctx, option -> ctx.str(R.string.action_change_ringer_mode_formatted, option) },
-
-            permissions = arrayOf(Manifest.permission.ACCESS_NOTIFICATION_POLICY),
-            options = listOf(
-                Option.RINGER_MODE_NORMAL,
-                Option.RINGER_MODE_VIBRATE,
-                Option.RINGER_MODE_SILENT
-            )
-        ),
-
-        //Require Marshmallow and higher
-        SystemActionDef(
-            id = VOLUME_MUTE,
-            category = CATEGORY_VOLUME,
-            minApi = Build.VERSION_CODES.M,
-            iconRes = R.drawable.ic_volume_mute_black_24dp,
-            descriptionRes = R.string.action_volume_mute,
-            permissions = arrayOf(Manifest.permission.ACCESS_NOTIFICATION_POLICY)
-        ),
-        SystemActionDef(
-            id = VOLUME_UNMUTE,
-            category = CATEGORY_VOLUME,
-            minApi = Build.VERSION_CODES.M,
-            iconRes = R.drawable.ic_volume_up_black_24dp,
-            descriptionRes = R.string.action_volume_unmute,
-            permissions = arrayOf(Manifest.permission.ACCESS_NOTIFICATION_POLICY)
-        ),
-        SystemActionDef(
-            id = VOLUME_TOGGLE_MUTE,
-            category = CATEGORY_VOLUME,
-            minApi = Build.VERSION_CODES.M,
-            iconRes = R.drawable.ic_volume_mute_black_24dp,
-            descriptionRes = R.string.action_toggle_mute,
-            permissions = arrayOf(Manifest.permission.ACCESS_NOTIFICATION_POLICY)
-        ),
         //VOLUME
-
-        //SCREEN ORIENTATION
-        SystemActionDef(
-            id = TOGGLE_AUTO_ROTATE,
-            category = CATEGORY_SCREEN_ROTATION,
-            permissions = arrayOf(Manifest.permission.WRITE_SETTINGS),
-            iconRes = R.drawable.ic_screen_rotation_black_24dp,
-            descriptionRes = R.string.action_toggle_auto_rotate
-        ),
-        SystemActionDef(
-            id = ENABLE_AUTO_ROTATE,
-            category = CATEGORY_SCREEN_ROTATION,
-            permissions = arrayOf(Manifest.permission.WRITE_SETTINGS),
-            iconRes = R.drawable.ic_screen_rotation_black_24dp,
-            descriptionRes = R.string.action_enable_auto_rotate
-        ),
-        SystemActionDef(
-            id = DISABLE_AUTO_ROTATE,
-            category = CATEGORY_SCREEN_ROTATION,
-            permissions = arrayOf(Manifest.permission.WRITE_SETTINGS),
-            iconRes = R.drawable.ic_screen_lock_rotation_black_24dp,
-            descriptionRes = R.string.action_disable_auto_rotate
-        ),
-        SystemActionDef(
-            id = PORTRAIT_MODE,
-            category = CATEGORY_SCREEN_ROTATION,
-            permissions = arrayOf(Manifest.permission.WRITE_SETTINGS),
-            iconRes = R.drawable.ic_stay_current_portrait_black_24dp,
-            descriptionRes = R.string.action_portrait_mode
-        ),
-        SystemActionDef(
-            id = LANDSCAPE_MODE,
-            category = CATEGORY_SCREEN_ROTATION,
-            permissions = arrayOf(Manifest.permission.WRITE_SETTINGS),
-            iconRes = R.drawable.ic_stay_current_landscape_black_24dp,
-            descriptionRes = R.string.action_landscape_mode
-        ),
-        SystemActionDef(
-            id = SWITCH_ORIENTATION,
-            category = CATEGORY_SCREEN_ROTATION,
-            permissions = arrayOf(Manifest.permission.WRITE_SETTINGS),
-            iconRes = R.drawable.ic_screen_rotation_black_24dp,
-            descriptionRes = R.string.action_switch_orientation
-        ),
-        //SCREEN ORIENTATION
-
-        //BRIGHTNESS
-        SystemActionDef(
-            id = TOGGLE_AUTO_BRIGHTNESS,
-            category = CATEGORY_BRIGHTNESS,
-            iconRes = R.drawable.ic_brightness_auto_black_24dp,
-            descriptionRes = R.string.action_toggle_auto_brightness,
-            permissions = arrayOf(Manifest.permission.WRITE_SETTINGS)
-        ),
-        SystemActionDef(
-            id = ENABLE_AUTO_BRIGHTNESS,
-            category = CATEGORY_BRIGHTNESS,
-            iconRes = R.drawable.ic_brightness_auto_black_24dp,
-            descriptionRes = R.string.action_enable_auto_brightness,
-            permissions = arrayOf(Manifest.permission.WRITE_SETTINGS)
-        ),
-        SystemActionDef(
-            id = DISABLE_AUTO_BRIGHTNESS,
-            category = CATEGORY_BRIGHTNESS,
-            iconRes = R.drawable.ic_disable_brightness_auto_24dp,
-            descriptionRes = R.string.action_disable_auto_brightness,
-            permissions = arrayOf(Manifest.permission.WRITE_SETTINGS)
-        ),
-        SystemActionDef(
-            id = INCREASE_BRIGHTNESS,
-            category = CATEGORY_BRIGHTNESS,
-            iconRes = R.drawable.ic_brightness_high_black_24dp,
-            descriptionRes = R.string.action_increase_brightness,
-            permissions = arrayOf(Manifest.permission.WRITE_SETTINGS)
-        ),
-        SystemActionDef(
-            id = DECREASE_BRIGHTNESS,
-            category = CATEGORY_BRIGHTNESS,
-            iconRes = R.drawable.ic_brightness_low_black_24dp,
-            descriptionRes = R.string.action_decrease_brightness,
-            permissions = arrayOf(Manifest.permission.WRITE_SETTINGS)
-        ),
-
-        //FLASHLIGHT
-        SystemActionDef(
-            id = SystemAction.TOGGLE_FLASHLIGHT,
-            category = CATEGORY_FLASHLIGHT,
-            permissions = arrayOf(Manifest.permission.CAMERA),
-            features = arrayOf(PackageManager.FEATURE_CAMERA_FLASH),
-            minApi = Build.VERSION_CODES.M,
-            iconRes = R.drawable.ic_flashlight,
-            descriptionRes = R.string.action_toggle_flashlight,
-            getDescriptionWithOption = { ctx, optionText -> ctx.str(R.string.action_toggle_flashlight_formatted, optionText) },
-            options = Option.LENSES
-        ),
-        SystemActionDef(
-            id = SystemAction.ENABLE_FLASHLIGHT,
-            category = CATEGORY_FLASHLIGHT,
-            permissions = arrayOf(Manifest.permission.CAMERA),
-            features = arrayOf(PackageManager.FEATURE_CAMERA_FLASH),
-            minApi = Build.VERSION_CODES.M,
-            iconRes = R.drawable.ic_flashlight,
-            descriptionRes = R.string.action_enable_flashlight,
-            getDescriptionWithOption = { ctx, optionText -> ctx.str(R.string.action_toggle_flashlight_formatted, optionText) },
-            options = Option.LENSES
-        ),
-        SystemActionDef(
-            id = SystemAction.DISABLE_FLASHLIGHT,
-            category = CATEGORY_FLASHLIGHT,
-            permissions = arrayOf(Manifest.permission.CAMERA),
-            features = arrayOf(PackageManager.FEATURE_CAMERA_FLASH),
-            minApi = Build.VERSION_CODES.M,
-            iconRes = R.drawable.ic_flashlight_off,
-            descriptionRes = R.string.action_disable_flashlight,
-            getDescriptionWithOption = { ctx, optionText -> ctx.str(R.string.action_toggle_flashlight_formatted, optionText)},
-            options = Option.LENSES
-        ),
-
-        //NFC
-        SystemActionDef(
-            id = ENABLE_NFC,
-            category = CATEGORY_NFC,
-            iconRes = R.drawable.ic_outline_nfc_24px,
-            permissions = arrayOf(Constants.PERMISSION_ROOT),
-            features = arrayOf(PackageManager.FEATURE_NFC),
-            descriptionRes = R.string.action_nfc_enable
-        ),
-        SystemActionDef(
-            id = DISABLE_NFC,
-            category = CATEGORY_NFC,
-            features = arrayOf(PackageManager.FEATURE_NFC),
-            iconRes = R.drawable.ic_nfc_off,
-            permissions = arrayOf(Constants.PERMISSION_ROOT),
-            descriptionRes = R.string.action_nfc_disable
-        ),
-        SystemActionDef(
-            id = TOGGLE_NFC,
-            category = CATEGORY_NFC,
-            features = arrayOf(PackageManager.FEATURE_NFC),
-            iconRes = R.drawable.ic_outline_nfc_24px,
-            permissions = arrayOf(Constants.PERMISSION_ROOT),
-            descriptionRes = R.string.action_nfc_toggle
-        ),
-
-        //KEYBOARD
-        SystemActionDef(id = MOVE_CURSOR_TO_END,
-            category = CATEGORY_KEYBOARD,
-            iconRes = R.drawable.ic_cursor,
-            messageOnSelection = R.string.action_move_to_end_of_text_message,
-            descriptionRes = R.string.action_move_to_end_of_text),
-
-        SystemActionDef(id = TOGGLE_KEYBOARD,
-            category = CATEGORY_KEYBOARD,
-            minApi = Build.VERSION_CODES.N,
-            iconRes = R.drawable.ic_keyboard_on_surface,
-            messageOnSelection = R.string.action_toggle_keyboard_message,
-            descriptionRes = R.string.action_toggle_keyboard),
-
-        SystemActionDef(id = SHOW_KEYBOARD,
-            category = CATEGORY_KEYBOARD,
-            minApi = Build.VERSION_CODES.N,
-            iconRes = R.drawable.ic_keyboard_on_surface,
-            messageOnSelection = R.string.action_toggle_keyboard_message,
-            descriptionRes = R.string.action_show_keyboard),
-
-        SystemActionDef(id = HIDE_KEYBOARD,
-            category = CATEGORY_KEYBOARD,
-            minApi = Build.VERSION_CODES.N,
-            iconRes = R.drawable.ic_keyboard_hide_24dp,
-            messageOnSelection = R.string.action_toggle_keyboard_message,
-            descriptionRes = R.string.action_hide_keyboard),
-
-        SystemActionDef(id = SHOW_KEYBOARD_PICKER,
-            category = CATEGORY_KEYBOARD,
-            iconRes = R.drawable.ic_keyboard_on_surface,
-            maxApi = Build.VERSION_CODES.O,
-            descriptionRes = R.string.action_show_keyboard_picker),
-
-        SystemActionDef(id = SHOW_KEYBOARD_PICKER_ROOT,
-            category = CATEGORY_KEYBOARD,
-            iconRes = R.drawable.ic_keyboard_on_surface,
-            permissions = arrayOf(Constants.PERMISSION_ROOT),
-            minApi = Build.VERSION_CODES.O_MR1,
-            descriptionRes = R.string.action_show_keyboard_picker_root),
-
-        SystemActionDef(id = SWITCH_KEYBOARD,
-            category = CATEGORY_KEYBOARD,
-            iconRes = R.drawable.ic_keyboard_on_surface,
-            permissions = arrayOf(Constants.PERMISSION_ROOT),
-            descriptionRes = R.string.action_switch_keyboard,
-            getDescriptionWithOption = { ctx, optionText ->
-                ctx.str(R.string.action_switch_keyboard_formatted, optionText)
-            },
-            getOptions = { ctx ->
-                KeyboardUtils.getInputMethodIds(ctx)
-            }
-        ),
 
         //OTHER
         SystemActionDef(
@@ -565,53 +167,6 @@ object SystemActionUtils {
             minApi = Build.VERSION_CODES.P,
             iconRes = R.drawable.ic_screenshot_black_24dp,
             descriptionRes = R.string.action_screenshot
-        ),
-        SystemActionDef(
-            id = OPEN_ASSISTANT,
-            category = CATEGORY_OTHER,
-            iconRes = R.drawable.ic_assistant_black_24dp,
-            descriptionRes = R.string.action_open_assistant
-        ),
-        SystemActionDef(
-            id = OPEN_CAMERA,
-            category = CATEGORY_OTHER,
-            iconRes = R.drawable.ic_camera_alt_black_24dp,
-            descriptionRes = R.string.action_open_camera
-        ),
-        SystemActionDef(
-            id = LOCK_DEVICE,
-            category = CATEGORY_OTHER,
-            iconRes = R.drawable.ic_outline_lock_24px,
-            descriptionRes = R.string.action_lock_device,
-            minApi = Build.VERSION_CODES.P
-        ),
-        SystemActionDef(
-            id = LOCK_DEVICE_ROOT,
-            category = CATEGORY_OTHER,
-            iconRes = R.drawable.ic_outline_lock_24px,
-            descriptionRes = R.string.action_lock_device_root,
-            maxApi = Build.VERSION_CODES.O_MR1,
-            permissions = arrayOf(Constants.PERMISSION_ROOT)
-        ),
-        SystemActionDef(
-            id = SECURE_LOCK_DEVICE,
-            category = CATEGORY_OTHER,
-            iconRes = R.drawable.ic_outline_lock_24px,
-            descriptionRes = R.string.action_secure_lock_device,
-            features = arrayOf(PackageManager.FEATURE_DEVICE_ADMIN),
-            permissions = arrayOf(Manifest.permission.BIND_DEVICE_ADMIN),
-            messageOnSelection = R.string.action_secure_lock_device_message
-        ),
-        SystemActionDef(
-            id = CONSUME_KEY_EVENT,
-            category = CATEGORY_OTHER,
-            descriptionRes = R.string.action_consume_keyevent
-        ),
-        SystemActionDef(
-            id = OPEN_SETTINGS,
-            category = CATEGORY_OTHER,
-            descriptionRes = R.string.action_open_settings,
-            iconRes = R.drawable.ic_outline_settings_24px
         ),
         SystemActionDef(
             id = SHOW_POWER_MENU,

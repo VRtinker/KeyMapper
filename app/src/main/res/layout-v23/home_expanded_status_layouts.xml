@@ -15,33 +15,13 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <io.github.sds100.keymapper.view.StatusLayout
-        android:id="@+id/secureSettingsStatusLayout"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:fixedText="@string/fixed_need_write_secure_settings_permission"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/accessibilityServiceStatusLayout"
-        app:warningText="@string/warning_need_write_secure_settings_permission" />
-
-    <io.github.sds100.keymapper.view.StatusLayout
-        android:id="@+id/imeServiceStatusLayout"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:errorText="@string/error_critical_ime_service_disabled"
-        app:fixedText="@string/error_ime_service_enabled"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/secureSettingsStatusLayout"
-        app:warningText="@string/error_ime_service_disabled_status_layout" />
-
-    <io.github.sds100.keymapper.view.StatusLayout
         android:id="@+id/dndAccessStatusLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:fixedText="@string/dnd_access_granted"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/imeServiceStatusLayout"
+        app:layout_constraintTop_toBottomOf="@id/accessibilityServiceStatusLayout"
         app:warningText="@string/error_dnd_access_not_granted" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

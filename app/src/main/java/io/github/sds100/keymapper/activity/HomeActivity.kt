@@ -37,9 +37,7 @@ import io.github.sds100.keymapper.selection.SelectionEvent.START
 import io.github.sds100.keymapper.selection.SelectionEvent.STOP
 import io.github.sds100.keymapper.selection.SelectionProvider
 import io.github.sds100.keymapper.service.MyAccessibilityService
-import io.github.sds100.keymapper.service.MyIMEService
 import io.github.sds100.keymapper.util.*
-import io.github.sds100.keymapper.util.ErrorCodeUtils.ERROR_CODE_IME_SERVICE_DISABLED
 import io.github.sds100.keymapper.view.BottomSheetMenu
 import io.github.sds100.keymapper.view.StatusLayout
 import io.github.sds100.keymapper.viewmodel.HomeViewModel
@@ -83,7 +81,6 @@ class HomeActivity : AppCompatActivity(), SelectionCallback, OnItemClickListener
     private val mStatusLayouts
         get() = sequence {
             yield(accessibilityServiceStatusLayout)
-            yield(imeServiceStatusLayout)
 
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
                 yield(dndAccessStatusLayout)
@@ -165,10 +162,6 @@ class HomeActivity : AppCompatActivity(), SelectionCallback, OnItemClickListener
                 mBottomSheetView.dismiss()
             }
 
-            view.menuItemChangeKeyboard.setOnClickListener {
-                KeyboardUtils.showInputMethodPicker(this)
-            }
-
             view.menuItemSendFeedback.setOnClickListener { FeedbackUtils.sendFeedback(this) }
         }
 
@@ -185,14 +178,6 @@ class HomeActivity : AppCompatActivity(), SelectionCallback, OnItemClickListener
 
         accessibilityServiceStatusLayout.setOnFixClickListener(View.OnClickListener {
             AccessibilityUtils.enableService(this)
-        })
-
-        imeServiceStatusLayout.setOnFixClickListener(View.OnClickListener {
-            KeyboardUtils.openImeSettings(this)
-        })
-
-        secureSettingsStatusLayout.setOnFixClickListener(View.OnClickListener {
-            PermissionUtils.requestWriteSecureSettingsPermission(this)
         })
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
@@ -418,27 +403,6 @@ class HomeActivity : AppCompatActivity(), SelectionCallback, OnItemClickListener
 
                 mAccessibilityServiceTapTargetView = TapTargetView.showFor(this, target)
             }
-        }
-
-        if (haveWriteSecureSettingsPermission) {
-            secureSettingsStatusLayout.changeToFixedState()
-        } else {
-            secureSettingsStatusLayout.changeToWarningState()
-        }
-
-        if (MyIMEService.isServiceEnabled(this)) {
-            imeServiceStatusLayout.changeToFixedState()
-
-        } else if (mViewModel.keyMapList.value != null
-            && mViewModel.keyMapList.value!!.any {
-                val errorResult = ActionUtils.getError(this, it.action)
-
-                errorResult?.errorCode == ERROR_CODE_IME_SERVICE_DISABLED
-            }) {
-
-            imeServiceStatusLayout.changeToErrorState()
-        } else {
-            imeServiceStatusLayout.changeToWarningState()
         }
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {

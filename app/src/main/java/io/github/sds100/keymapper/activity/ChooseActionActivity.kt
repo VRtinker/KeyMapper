@@ -36,16 +36,10 @@ class ChooseActionActivity : AppCompatActivity(), ITabDelegate, TabLayout.OnTabS
             yieldAll(listOf(
                 str(R.string.action_type_title_application),
                 str(R.string.action_type_title_application_shortcut),
-                str(R.string.action_type_title_keycode),
-                str(R.string.action_type_title_key),
-                str(R.string.action_type_title_text_block),
                 str(R.string.action_type_url),
                 str(R.string.action_type_title_system_action)
             ))
 
-            if (!mAreAllActionsSupported) {
-                yield(str(R.string.tab_unsupported_actions))
-            }
         }.toList()
     }
 
@@ -80,16 +74,10 @@ class ChooseActionActivity : AppCompatActivity(), ITabDelegate, TabLayout.OnTabS
                 yieldAll(listOf(
                     AppActionTypeFragment(),
                     AppShortcutActionTypeFragment(),
-                    KeycodeActionTypeFragment(),
-                    KeyActionTypeFragment(),
-                    TextActionTypeFragment(),
                     UrlActionTypeFragment(),
                     SystemActionFragment()
                 ))
 
-                if (!mAreAllActionsSupported) {
-                    yield(UnsupportedActionsFragment())
-                }
             }.toList()
 
         } else {

@@ -15,13 +15,19 @@
     <color name="actionModeBackground">#424242</color>
     <color name="actionModeStatusBar">#212121</color>
 
-    <color name="green">#4CAF50</color>
-    <color name="greenDark">#087f23</color>
+    <color name="green">#08750d</color>
+    <color name="greenDark">#003d0e</color>
 
-    <color name="red">#d32f2f</color>
-    <color name="redDark">#9a0007</color>
+    <color name="red">#992020</color>
+    <color name="redDark">#750005</color>
 
-    <color name="blue">#2196f3</color>
+    <color name="purple">#7900ff</color>
+    <color name="purpleDark">#4d00a3</color>
+
+    <color name="bluegreen">#00ad8b</color>
+    <color name="bluegreenDark">#005e4c</color>
+
+    <color name="blue">#236899</color>
     <color name="blueDark">#0069c0</color>
 
     <color name="orange">#ef6c00</color>
