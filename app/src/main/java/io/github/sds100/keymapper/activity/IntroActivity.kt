@@ -37,7 +37,7 @@ class IntroActivity : IntroActivity() {
             description(R.string.showcase_note_from_the_developer_message)
             background(R.color.purple)
             backgroundDark(R.color.purpleDark)
-            image(R.drawable.ic_reconquestlogoandroid_bw)
+            image(R.drawable.logo)
             canGoBackward(true)
             scrollable(true)
         }.build()
