@@ -1,7 +1,31 @@
 # Changelog 
 
 All notable changes to this project will be documented in this file. This project adheres to semantic versioning.
- 
+
+## [1.1.7-ReconQuest](https://github.com/VRtinker/KeyMapper/releases/tag/1.1.7-ReconQuest)
+#### Mar 2020
+
+### Removed
+- Every UI reference to functions that require ROOT
+- Every UI reference to functions that require WRITE_SECURE
+- Every UI reference and code to functions that require the use of the IME Keyboard (the keyboard picker does not render on the Oculus Quest)
+- Every UI reference to KEY, KEYCODE and TEXT functions that do not work on the Oculus Quest
+- Every UI reference and code to shortcurts in "Other" that do not work on the Oculus Quest
+- Every UI reference to functions in the Settings Menu that do not work on the Oculus Quest
+- Keyboard Picker shortcut
+- 1 slide from the stock Intro activity
+
+### Added
+- 6 extra slides to the Intro activity
+- extra icon assets
+- extra colors
+
+### Changes
+- Modified IntroActivity.kt to include a list of slides that launches every app requiring initial setup to complete ReconQuest's Post-Install process
+- Heavily modified strings.xml to account for removed/added functions and reworded a lot of existing text
+- Changed default values for any feature relevant to the Oculus Quest
+- 2 slides from the Intro activity where repurposed
+
 ## [Unreleased](https://github.com/sds100/KeyMapper/tree/develop)
 
 ## [1.1.7](https://github.com/sds100/KeyMapper/releases/tag/v1.1.7)

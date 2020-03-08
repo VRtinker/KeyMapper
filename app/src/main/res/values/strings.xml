@@ -250,24 +250,43 @@
 
     <!-- Showcase -->
     <string name="showcase_accessibility_service_title">Enable the accessibility service</string>
-    <string name="showcase_accessibility_service_description">In order for Key Mapper to work on your Oculus Quest, you have to enable its accessibility service. Tap the “FIX” button to load the Accessibility settings menu, select “Key Mapper” and flip the toggle to enable access, then press B or Y twice on the Oculus Touch controller to come back to this screen and continue</string>
+    <string name="showcase_accessibility_service_description">In order for Key Mapper to work on your Oculus Quest, you have to enable its accessibility service. Tap the “FIX” button to load the Accessibility settings menu, select “Key Mapper” and flip the toggle to enable access, then press B or Y (twice) on the Oculus Touch controller to come back to this screen and continue</string>
 
     <string name="showcase_record_trigger_title">The accessibility service is disabled</string>
     <string name="showcase_record_trigger_description">You can only record a trigger if the accessibility service is enabled.</string>
 
-    <string name="showcase_note_from_the_developer_title">Note to ReconQuest users</string>
-    <string name="showcase_note_from_the_developer_message">This is a version of Key Mapper specifically modified to be used on the Oculus Quest, therefore it differs from the version provided by its original developer. Any original Key Mapper option that is not relevant on the Oculus Quest has been removed. If you encounter any issues, please refrain from contacting the original developer, but notify the developer of ReconQuest instead!</string>
+    <string name="showcase_ReconQuestPostInstall_title">ReconQuest Post-Install</string>
+    <string name="showcase_ReconQuestPostInstall_message">Dear ReconQuest user, these are the last steps to complete the installation. Each slide that follows has a button to launch an application or a system setting that requires your input. To tap a button on screen, press the A or X button on your Touch Controller. When you are done configuring a given application or setting, press the B or Y button (multiple times if necessary) on your Touch Controller to return to the slides and continue to the next one. Every slide contains the gist of what you are required to do, but you should refer to the installation video for a complete guide</string>
+
+    <string name="showcase_launch_AutoLaunch_title">Configure AutoLaunch</string>
+    <string name="showcase_launch_AutoLaunch_message">Activate your license, disable all unnecessary settings. Open AutoLaunch, then click Activate License to be prompted to browse for a file Your license, uploaded by the Toolkit during the pre-install, is located in /sdcard/Download/ (the file picker should default to that location) Select “AL-License.txt” to validate it (internet connection will be REQUIRED during the process). Please refer to the installation video for full details</string>
+    <string name="showcase_launch_AutoLaunch_button">Open AutoLaunch</string>
+
+    <string name="showcase_launch_AutoTools_title">Configure AutoTools</string>
+    <string name="showcase_launch_AutoTools_message">Activate your license, keep the current power profile (when prompted on exit), disable all unnecessary settings. Open AutoTools, then click Activate License to be prompted to browse for a file. Your license, uploaded by the Toolkit during the pre-install, is located in /sdcard/Download/ (the file picker should default to that location). Select “AT-License.txt” to validate it (internet connection will be REQUIRED during the process). On exit, select CANCEL when prompted “Give it access to ignore Doze”. Please refer to the installation video for full details</string>
+    <string name="showcase_launch_AutoTools_button">Open AutoTools</string>
+
+    <string name="showcase_launch_RemoteLauncherFree_title">Configure Remote Launcher</string>
+    <string name="showcase_launch_RemoteLauncherFree_message">Create a profile with the details of your Server, configure settings. Open Remote Launcher, then click the “Add Server button”. Fill in the Name, IP, Port and Password of your server and save. Assuming the server is running on your PC, the ReconQuest scripts will populate the list in the Client. Please refer to the installation video for full details</string>
+    <string name="showcase_launch_RemoteLauncherFree_button">Open Remote Launcher</string>
+
+    <string name="showcase_launch_Tasker_title">Configure Tasker</string>
+    <string name="showcase_launch_Tasker_message">Activate your license, restore data from backup, activate/deactivate profiles, keep the current power profile (when asked on exit), disable all unnecessary settings. Open Tasker. Please refer to the installation video for full details</string>
+    <string name="showcase_launch_Tasker_button">Open Tasker</string>
+
+    <string name="showcase_launch_SecureTask_title">Configure SecureTask</string>
+    <string name="showcase_launch_SecureTask_message">Accept TOS and keep the current power profile (when prompted on load). Open SecureTask, then AGREE to the TOS and select NO to “Ignore Battery Optimization”</string>
+    <string name="showcase_launch_SecureTask_button">Open SecureTask</string>
+
+    <string name="showcase_note_from_the_developer_title">Notes to ReconQuest Users</string>
+    <string name="showcase_note_from_the_developer_message">The last 3 slides will help you setup Key Mapper. It has been specifically modified to work on the Oculus Quest, therefore it differs from the version provided by its original developer. Any original Key Mapper option that is not relevant on the Oculus Quest has been removed. If you encounter any issues, please refrain from contacting the original developer, but notify the developer of ReconQuest instead!</string>
 
     <string name="showcase_enable_accessibility_service_title">Enable Accessibility Service</string>
     <string name="showcase_enable_accessibility_service_message">In order for Key Mapper to monitor your clicks and perform the associated mapped actions on your Oculus Quest, you have to enable its “Accessibility service”. When that is the case, by default, a long press (>750ms) of the Volume-(Down) button will launch ReconQuest. To enable it, tap the “GRANT” button below to load the Accessibility settings menu, select “Key Mapper” and flip the toggle to enable access, then press B or Y (twice) on the Oculus Touch controller to come back to this screen and continue.</string>
     <string name="showcase_enable_accessibility_service_button">Grant</string>
 
-    <string name="showcase_disable_battery_optimisation_title">Disable battery optimization</string>
-    <string name="showcase_disable_battery_optimisation_message">Even though you are offered the choice, if you so wish, you DO NOT NEED to disable battery optimization to prevent Android from stopping Key Mapper while it runs in the background On the Oculus Quest, Key Mapper is kept alive even while the battery optimization is enabled. Therefore you can safely ignore the “TURN OFF” button below and continue</string>
-    <string name="showcase_disable_battery_optimisation_button">Turn off</string>
-
     <string name="showcase_dnd_access_title">Do Not Disturb Permission</string>
-    <string name="showcase_dnd_access_description">Key Mapper needs “Do Not Disturb” permission granted. When that is not the case, the Volume button mapped to launch ReconQuest will cease to provide its regular functionality (i.e.: assuming the default configuration is left untouched, you would no longer be able to use the button to decrease the volume as well). This holds true whether your Oculus Quest is running in “Do Not Disturb” mode or not. Tap the “GRANT” button below to load the “Do Not Disturb” permission menu, flip the toggle to grant permission, then press B or Y on the Oculus Touch controller to complete the setup of your Oculus Quest!</string>
+    <string name="showcase_dnd_access_description">Key Mapper needs “Do Not Disturb” permission granted. When denied, the Volume button mapped to launch ReconQuest will cease to provide its regular functionality (i.e.: assuming the default configuration is left untouched, you would no longer be able to use the button to decrease the volume as well). This holds true whether your Oculus Quest is running in “Do Not Disturb” mode or not. Tap the “GRANT” button below to load the “Do Not Disturb” permission menu, flip the toggle to grant permission, then press B or Y on the Oculus Touch controller to exit the menu thus completing the installation of ReconQuest!</string>
 
     <!-- Showcase -->
 

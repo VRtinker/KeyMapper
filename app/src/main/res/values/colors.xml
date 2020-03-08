@@ -15,6 +15,21 @@
     <color name="actionModeBackground">#424242</color>
     <color name="actionModeStatusBar">#212121</color>
 
+    <color name="autolaunch">#A1C406</color>
+    <color name="autolaunchDark">#4f6102</color>
+
+    <color name="autotools">#ffb405</color>
+    <color name="autotoolsDark">#7d5700</color>
+
+    <color name="remotelauncher">#9dcc39</color>
+    <color name="remotelauncherDark">#5b781f</color>
+
+    <color name="securetask">#000000</color>
+    <color name="securetaskDark">#c25a00</color>
+
+    <color name="tasker">#ff6905</color>
+    <color name="taskerDark">#ab4400</color>
+
     <color name="green">#08750d</color>
     <color name="greenDark">#003d0e</color>
 

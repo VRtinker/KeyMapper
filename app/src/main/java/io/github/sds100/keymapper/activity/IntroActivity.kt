@@ -14,10 +14,10 @@ import com.heinrichreimersoftware.materialintro.slide.SimpleSlide
 import com.heinrichreimersoftware.materialintro.slide.Slide
 import io.github.sds100.keymapper.Constants
 import io.github.sds100.keymapper.R
-import io.github.sds100.keymapper.util.DexUtils.isDexSupported
 import io.github.sds100.keymapper.util.PermissionUtils
 import io.github.sds100.keymapper.util.isPermissionGranted
 import org.jetbrains.anko.longToast
+
 
 /**
  * Created by sds100 on 07/07/2019.
@@ -31,17 +31,119 @@ class IntroActivity : IntroActivity() {
         const val REQUEST_CODE_INTRO = 123
     }
 
-    private val mNoteFromDevSlide by lazy {
+    private val mReconQuestPostInstall by lazy {
         SimpleSlide.Builder().apply {
-            title(R.string.showcase_note_from_the_developer_title)
-            description(R.string.showcase_note_from_the_developer_message)
+            title(R.string.showcase_ReconQuestPostInstall_title)
+            description(R.string.showcase_ReconQuestPostInstall_message)
             background(R.color.purple)
             backgroundDark(R.color.purpleDark)
-            image(R.drawable.logo)
+            image(R.drawable.reconquest)
             canGoBackward(true)
             scrollable(true)
         }.build()
     }
+    private val mLaunchAutoLaunch by lazy {
+        SimpleSlide.Builder().apply {
+            title(R.string.showcase_launch_AutoLaunch_title)
+            description(R.string.showcase_launch_AutoLaunch_message)
+            background(R.color.autolaunch)
+            backgroundDark(R.color.autolaunchDark)
+            image(R.drawable.autolaunch)
+            canGoBackward(true)
+            scrollable(true)
+
+            buttonCtaLabel(R.string.showcase_launch_AutoLaunch_button)
+            buttonCtaClickListener {
+                val launchIntent = packageManager.getLaunchIntentForPackage("com.joaomgcd.autoapps")
+                startActivity(launchIntent)
+            }
+        }.build()
+    }
+
+    private val mLaunchAutoTools by lazy {
+        SimpleSlide.Builder().apply {
+            title(R.string.showcase_launch_AutoTools_title)
+            description(R.string.showcase_launch_AutoTools_message)
+            background(R.color.autotools)
+            backgroundDark(R.color.autotoolsDark)
+            image(R.drawable.autotools)
+            canGoBackward(true)
+            scrollable(true)
+
+            buttonCtaLabel(R.string.showcase_launch_AutoTools_button)
+            buttonCtaClickListener {
+                val launchIntent = packageManager.getLaunchIntentForPackage("com.joaomgcd.autotools")
+                startActivity(launchIntent)
+            }
+        }.build()
+    }
+
+    private val mLaunchRemoteLauncher by lazy {
+        SimpleSlide.Builder().apply {
+            title(R.string.showcase_launch_RemoteLauncherFree_title)
+            description(R.string.showcase_launch_RemoteLauncherFree_message)
+            background(R.color.remotelauncher)
+            backgroundDark(R.color.remotelauncherDark)
+            image(R.drawable.remotelauncher)
+            canGoBackward(true)
+            scrollable(true)
+
+            buttonCtaLabel(R.string.showcase_launch_RemoteLauncherFree_button)
+            buttonCtaClickListener {
+                val launchIntent = packageManager.getLaunchIntentForPackage("com.owtroid.remotelauncherfree")
+                startActivity(launchIntent)
+            }
+        }.build()
+    }
+
+    private val mLaunchTasker by lazy {
+        SimpleSlide.Builder().apply {
+            title(R.string.showcase_launch_Tasker_title)
+            description(R.string.showcase_launch_Tasker_message)
+            background(R.color.tasker)
+            backgroundDark(R.color.taskerDark)
+            image(R.drawable.tasker)
+            canGoBackward(true)
+            scrollable(true)
+
+            buttonCtaLabel(R.string.showcase_launch_Tasker_button)
+            buttonCtaClickListener {
+                val launchIntent = packageManager.getLaunchIntentForPackage("net.dinglisch.android.taskerm")
+                startActivity(launchIntent)
+            }
+        }.build()
+    }
+
+    private val mLaunchSecureTask by lazy {
+        SimpleSlide.Builder().apply {
+            title(R.string.showcase_launch_SecureTask_title)
+            description(R.string.showcase_launch_SecureTask_message)
+            background(R.color.securetask)
+            backgroundDark(R.color.securetaskDark)
+            image(R.drawable.securetask)
+            canGoBackward(true)
+            scrollable(true)
+
+            buttonCtaLabel(R.string.showcase_launch_SecureTask_button)
+            buttonCtaClickListener {
+                val launchIntent = packageManager.getLaunchIntentForPackage("com.balda.securetask")
+                startActivity(launchIntent)
+            }
+        }.build()
+    }
+
+    private val mNoteFromDevSlide by lazy {
+        SimpleSlide.Builder().apply {
+            title(R.string.showcase_note_from_the_developer_title)
+            description(R.string.showcase_note_from_the_developer_message)
+            background(R.color.red)
+            backgroundDark(R.color.redDark)
+            image(R.drawable.ic_launcher_foreground)
+            canGoBackward(true)
+            scrollable(true)
+        }.build()
+    }
+
     private val mEnableAccesssibilityServiceSlide by lazy {
         SimpleSlide.Builder().apply {
             title(R.string.showcase_enable_accessibility_service_title)
@@ -65,28 +167,6 @@ class IntroActivity : IntroActivity() {
 
 
 
-        }.build()
-    }
-
-    private val mBatteryOptimisationSlide by lazy {
-        SimpleSlide.Builder().apply {
-            title(R.string.showcase_disable_battery_optimisation_title)
-            description(R.string.showcase_disable_battery_optimisation_message)
-            background(R.color.bluegreen)
-            backgroundDark(R.color.bluegreenDark)
-            image(R.drawable.ic_battery_std_white_64dp)
-            canGoBackward(true)
-            scrollable(true)
-
-            buttonCtaLabel(R.string.showcase_disable_battery_optimisation_button)
-            buttonCtaClickListener {
-                try {
-                    val intent = Intent(Settings.ACTION_IGNORE_BATTERY_OPTIMIZATION_SETTINGS)
-                    startActivity(intent)
-                } catch (e: ActivityNotFoundException) {
-                    longToast(R.string.error_battery_optimisation_activity_not_found)
-                }
-            }
         }.build()
     }
 
@@ -115,35 +195,28 @@ class IntroActivity : IntroActivity() {
 
         isSkipEnabled = false
 
+        addSlide(mReconQuestPostInstall)
+
+        addSlide(mLaunchAutoLaunch)
+
+        addSlide(mLaunchAutoTools)
+
+        addSlide(mLaunchRemoteLauncher)
+
+        addSlide(mLaunchTasker)
+
+        addSlide(mLaunchSecureTask)
+
         addSlide(mNoteFromDevSlide)
 
         addSlide(mEnableAccesssibilityServiceSlide)
 
-        val powerManager = (getSystemService(Context.POWER_SERVICE)) as PowerManager
+        addSlide(mDndAccessSlide)
 
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M
-            && !powerManager.isIgnoringBatteryOptimizations(Constants.PACKAGE_NAME)) {
-            addSlide(mBatteryOptimisationSlide)
-        }
-
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-            addSlide(mDndAccessSlide)
-        }
     }
 
     override fun onResume() {
         super.onResume()
-
-        val powerManager = (getSystemService(Context.POWER_SERVICE)) as PowerManager
-
-        /* when the user returns back from changing battery optimisation settings, go to the next page if they
-            have turned it off */
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M &&
-            powerManager.isIgnoringBatteryOptimizations(Constants.PACKAGE_NAME) &&
-            currentSlide == mBatteryOptimisationSlide) {
-            nextSlide()
-            removeSlide(mBatteryOptimisationSlide)
-        }
 
         if (isPermissionGranted(Manifest.permission.ACCESS_NOTIFICATION_POLICY) && currentSlide == mDndAccessSlide) {
             nextSlide()
