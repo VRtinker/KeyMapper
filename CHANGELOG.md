@@ -10,7 +10,7 @@ All notable changes to this project will be documented in this file. This projec
 - Every UI reference to functions that require WRITE_SECURE
 - Every UI reference and code to functions that require the use of the IME Keyboard (the keyboard picker does not render on the Oculus Quest)
 - Every UI reference to KEY, KEYCODE and TEXT functions that do not work on the Oculus Quest
-- Every UI reference and code to shortcurts in "Other" that do not work on the Oculus Quest
+- Every UI reference and code to shortcuts in "Other" that do not work on the Oculus Quest
 - Every UI reference to functions in the Settings Menu that do not work on the Oculus Quest
 - Keyboard Picker shortcut
 - 1 slide from the stock Intro activity
