@@ -24,7 +24,7 @@ All notable changes to this project will be documented in this file. This projec
 - Modified IntroActivity.kt to include a list of slides that launches every app requiring initial setup to complete ReconQuest's Post-Install process
 - Heavily modified strings.xml to account for removed/added functions and reworded a lot of existing text
 - Changed default values for any feature relevant to the Oculus Quest
-- 2 slides from the Intro activity where repurposed
+- 2 slides from the Intro activity were repurposed
 
 ## [Unreleased](https://github.com/sds100/KeyMapper/tree/develop)
 
