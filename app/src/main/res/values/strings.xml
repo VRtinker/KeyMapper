@@ -266,20 +266,20 @@
     <string name="showcase_launch_AutoTools_message">Activate your license, keep the current power profile (when prompted on exit), disable all unnecessary settings. Open AutoTools, then click Activate License to be prompted to browse for a file. Your license, uploaded by the Toolkit during the pre-install, is located in /sdcard/Download/ (the file picker should default to that location). Select “AT-License.txt” to validate it (internet connection will be REQUIRED during the process). On exit, select CANCEL when prompted “Give it access to ignore Doze”. Please refer to the installation video for full details</string>
     <string name="showcase_launch_AutoTools_button">Open AutoTools</string>
 
-    <string name="showcase_launch_RemoteLauncherFree_title">Configure Remote Launcher</string>
-    <string name="showcase_launch_RemoteLauncherFree_message">Create a profile with the details of your Server, configure settings. Open Remote Launcher, then click the “Add Server button”. Fill in the Name, IP, Port and Password of your server and save. Assuming the server is running on your PC, the ReconQuest scripts will populate the list in the Client. Please refer to the installation video for full details</string>
-    <string name="showcase_launch_RemoteLauncherFree_button">Open Remote Launcher</string>
-
     <string name="showcase_launch_Tasker_title">Configure Tasker</string>
     <string name="showcase_launch_Tasker_message">Activate your license, restore data from backup, activate/deactivate profiles, keep the current power profile (when asked on exit), disable all unnecessary settings. Open Tasker. Please refer to the installation video for full details</string>
     <string name="showcase_launch_Tasker_button">Open Tasker</string>
+
+    <string name="showcase_launch_RemoteLauncherFree_title">Configure Remote Launcher</string>
+    <string name="showcase_launch_RemoteLauncherFree_message">Create a profile with the details of your Server, configure settings. Open Remote Launcher, then click the “Add Server button”. Fill in the Name, IP, Port and Password of your server and save. Assuming the server is running on your PC, the ReconQuest scripts will populate the list in the Client. Please refer to the installation video for full details</string>
+    <string name="showcase_launch_RemoteLauncherFree_button">Open Remote Launcher</string>
 
     <string name="showcase_launch_SecureTask_title">Configure SecureTask</string>
     <string name="showcase_launch_SecureTask_message">Accept TOS and keep the current power profile (when prompted on load). Open SecureTask, then AGREE to the TOS and select NO to “Ignore Battery Optimization”</string>
     <string name="showcase_launch_SecureTask_button">Open SecureTask</string>
 
     <string name="showcase_note_from_the_developer_title">Notes to ReconQuest Users</string>
-    <string name="showcase_note_from_the_developer_message">The last 3 slides will help you setup Key Mapper. It has been specifically modified to work on the Oculus Quest, therefore it differs from the version provided by its original developer. Any original Key Mapper option that is not relevant on the Oculus Quest has been removed. If you encounter any issues, please refrain from contacting the original developer, but notify the developer of ReconQuest instead!</string>
+    <string name="showcase_note_from_the_developer_message">The last 2 slides will help you setup Key Mapper. It has been specifically modified to work on the Oculus Quest, therefore it differs from the version provided by its original developer. Any original Key Mapper option that is not relevant on the Oculus Quest has been removed. If you encounter any issues, please refrain from contacting the original developer, but notify the developer of ReconQuest instead!</string>
 
     <string name="showcase_enable_accessibility_service_title">Enable Accessibility Service</string>
     <string name="showcase_enable_accessibility_service_message">In order for Key Mapper to monitor your clicks and perform the associated mapped actions on your Oculus Quest, you have to enable its “Accessibility service”. When that is the case, by default, a long press (>750ms) of the Volume-(Down) button will launch ReconQuest. To enable it, tap the “GRANT” button below to load the Accessibility settings menu, select “Key Mapper” and flip the toggle to enable access, then press B or Y (twice) on the Oculus Touch controller to come back to this screen and continue.</string>

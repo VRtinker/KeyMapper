@@ -78,24 +78,6 @@ class IntroActivity : IntroActivity() {
         }.build()
     }
 
-    private val mLaunchRemoteLauncher by lazy {
-        SimpleSlide.Builder().apply {
-            title(R.string.showcase_launch_RemoteLauncherFree_title)
-            description(R.string.showcase_launch_RemoteLauncherFree_message)
-            background(R.color.remotelauncher)
-            backgroundDark(R.color.remotelauncherDark)
-            image(R.drawable.remotelauncher)
-            canGoBackward(true)
-            scrollable(true)
-
-            buttonCtaLabel(R.string.showcase_launch_RemoteLauncherFree_button)
-            buttonCtaClickListener {
-                val launchIntent = packageManager.getLaunchIntentForPackage("com.owtroid.remotelauncherfree")
-                startActivity(launchIntent)
-            }
-        }.build()
-    }
-
     private val mLaunchTasker by lazy {
         SimpleSlide.Builder().apply {
             title(R.string.showcase_launch_Tasker_title)
@@ -109,6 +91,24 @@ class IntroActivity : IntroActivity() {
             buttonCtaLabel(R.string.showcase_launch_Tasker_button)
             buttonCtaClickListener {
                 val launchIntent = packageManager.getLaunchIntentForPackage("net.dinglisch.android.taskerm")
+                startActivity(launchIntent)
+            }
+        }.build()
+    }
+
+    private val mLaunchRemoteLauncher by lazy {
+        SimpleSlide.Builder().apply {
+            title(R.string.showcase_launch_RemoteLauncherFree_title)
+            description(R.string.showcase_launch_RemoteLauncherFree_message)
+            background(R.color.remotelauncher)
+            backgroundDark(R.color.remotelauncherDark)
+            image(R.drawable.remotelauncher)
+            canGoBackward(true)
+            scrollable(true)
+
+            buttonCtaLabel(R.string.showcase_launch_RemoteLauncherFree_button)
+            buttonCtaClickListener {
+                val launchIntent = packageManager.getLaunchIntentForPackage("com.owtroid.remotelauncherfree")
                 startActivity(launchIntent)
             }
         }.build()
@@ -201,9 +201,9 @@ class IntroActivity : IntroActivity() {
 
         addSlide(mLaunchAutoTools)
 
-        addSlide(mLaunchRemoteLauncher)
-
         addSlide(mLaunchTasker)
+
+        addSlide(mLaunchRemoteLauncher)
 
         addSlide(mLaunchSecureTask)
 
