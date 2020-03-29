@@ -21,6 +21,9 @@
     <color name="autotools">#ffb405</color>
     <color name="autotoolsDark">#7d5700</color>
 
+    <color name="autotoolsSecureSettings">#ff8605</color>
+    <color name="autotoolsSecureSettingsDark">#914b00</color>
+
     <color name="remotelauncher">#9dcc39</color>
     <color name="remotelauncherDark">#5b781f</color>
 

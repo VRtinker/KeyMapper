@@ -266,6 +266,10 @@
     <string name="showcase_launch_AutoTools_message">Activate your license, keep the current power profile (when prompted on exit), disable all unnecessary settings. Open AutoTools, then click Activate License to be prompted to browse for a file. Your license, uploaded by the Toolkit during the pre-install, is located in /sdcard/Download/ (the file picker should default to that location). Select “AT-License.txt” to validate it (internet connection will be REQUIRED during the process). On exit, select CANCEL when prompted “Give it access to ignore Doze”. Please refer to the installation video for full details</string>
     <string name="showcase_launch_AutoTools_button">Open AutoTools</string>
 
+    <string name="showcase_launch_AutoToolsSecureSettings_title">Allow AutoTools to Modify System Settings</string>
+    <string name="showcase_launch_AutoToolsSecureSettings_message">AutoTools requires permission to “Modify System Settings” in order to perform some special tasks, like turning OFF Location and Bluetooth during boot. Tap the “GRANT” button below to load the “Modify System Settings” menu, flip the toggle to grant permission, then press B or Y on the Oculus Touch controller to come back to this screen and continue.</string>
+    <string name="showcase_launch_AutoToolsSecureSettings_button">Grant</string>
+
     <string name="showcase_launch_Tasker_title">Configure Tasker</string>
     <string name="showcase_launch_Tasker_message">Activate your license, restore data from backup, activate/deactivate profiles, keep the current power profile (when asked on exit), disable all unnecessary settings. Open Tasker. Please refer to the installation video for full details</string>
     <string name="showcase_launch_Tasker_button">Open Tasker</string>

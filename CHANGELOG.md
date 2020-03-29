@@ -16,7 +16,7 @@ All notable changes to this project will be documented in this file. This projec
 - 1 slide from the stock Intro activity
 
 ### Added
-- 6 extra slides to the Intro activity
+- 7 extra slides to the Intro activity
 - extra icon assets
 - extra colors
 

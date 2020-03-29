@@ -4,6 +4,7 @@ import android.Manifest
 import android.content.ActivityNotFoundException
 import android.content.Context
 import android.content.Intent
+import android.net.Uri
 import android.os.Build
 import android.os.Bundle
 import android.os.PowerManager
@@ -77,6 +78,27 @@ class IntroActivity : IntroActivity() {
             }
         }.build()
     }
+
+    private val mLaunchAutoToolsSecureSettings by lazy {
+        SimpleSlide.Builder().apply {
+            title(R.string.showcase_launch_AutoToolsSecureSettings_title)
+            description(R.string.showcase_launch_AutoToolsSecureSettings_message)
+            background(R.color.autotoolsSecureSettings)
+            backgroundDark(R.color.autotoolsSecureSettingsDark)
+            image(R.drawable.autotools)
+            canGoBackward(true)
+            scrollable(true)
+
+            buttonCtaLabel(R.string.showcase_launch_AutoToolsSecureSettings_button)
+            buttonCtaClickListener {
+                val settingsIntent = Intent(Settings.ACTION_MANAGE_WRITE_SETTINGS, Uri.parse("package:com.joaomgcd.autotools"))
+                startActivity(settingsIntent)
+            }
+        }.build()
+    }
+
+
+
 
     private val mLaunchTasker by lazy {
         SimpleSlide.Builder().apply {
@@ -200,6 +222,8 @@ class IntroActivity : IntroActivity() {
         addSlide(mLaunchAutoLaunch)
 
         addSlide(mLaunchAutoTools)
+
+        addSlide(mLaunchAutoToolsSecureSettings)
 
         addSlide(mLaunchTasker)
 
